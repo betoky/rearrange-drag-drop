@@ -5,7 +5,6 @@ let dragging;
 const onDragStart = e => {
   e.target.classList.add('dragging');
   dragging = +e.target.id;
-  
 }
 
 const onDragEnd = e => {
@@ -15,9 +14,10 @@ const onDragEnd = e => {
 const onDragOver = e => {
   e.preventDefault();
 }
+
 const onDragOverOnBox = e => {
   e.preventDefault();
-  const id = +e.target.textContent;
+  const id = +e.target.id;
   if (id !== dragging) {
     const box = document.getElementById(id);
     const move = document.getElementById(dragging);
@@ -30,12 +30,7 @@ const onDragOverOnBox = e => {
   }
 }
 
-const onDrop = e => {
-  const box = e.dataTransfer.getData('box');
-}
-
 container.addEventListener('dragover', onDragOver);
-container.addEventListener('drop', onDrop)
 
 boxes.forEach(box => {
   box.draggable = true;
